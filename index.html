@@ -296,9 +296,68 @@
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+
+  /* ── quote rails ── */
+  .quote-rail {
+    position: fixed;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .quote-rail.left  { left: 0; }
+  .quote-rail.right { right: 0; }
+
+  .quote-track {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 12px;
+    animation: scrollDown 60s linear infinite;
+  }
+  .quote-rail.right .quote-track {
+    animation-direction: reverse;
+  }
+
+  .q-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.35);
+    font-family: 'DM Mono', monospace;
+  }
+
+  @keyframes scrollDown {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+  }
+
+  @media (max-width: 1300px) {
+    .quote-rail { display: none; }
+  }
+
 </style>
 </head>
 <body>
+
+
+<div class="quote-rail left">
+  <div class="quote-track">
+    <div class="q-item">Your life is your story. Write it well.</div><div class="q-item">The best time is now</div><div class="q-item">Not everything is a competition, but if you don't treat it like that, you will never be successful.</div><div class="q-item">School taught me many things, for example, sleep 3 hours at night and on the next day stay alive during the class</div><div class="q-item">Tired</div><div class="q-item">A false spotlight shines to create the false sense of victory. Only when all the lights have been turned on can you see the entire room.</div><div class="q-item">Dream big, work hard, stay kind.</div><div class="q-item">Brain conflagrated, graduation successful.</div><div class="q-item">A quote doesn't decide who you are. You do.</div><div class="q-item">Gotta stay down and get it, I know that it's gon' be alright — NBA Youngboy</div><div class="q-item">I remember I wanted to quit so many times but, I knew this moment'd come, now its my time. — NBA Youngboy</div><div class="q-item">Let your light shine before others</div><div class="q-item">Ion Run It</div><div class="q-item">What you learn today shapes your tomorrow.</div><div class="q-item">I wish that time would last forever</div><div class="q-item">Graduating just to go back to school again</div><div class="q-item">Sometimes it's the journey that teaches you a lot about your destination — Drake</div><div class="q-item">My excuse is that I'm young. — Drake</div><div class="q-item">Let your failures teach you how to dougie</div><div class="q-item">Don't let others write your story; let ChatGPT and Google write it. That's how you make less mistakes. Trust me, I've been through it.</div><div class="q-item">Hard work never betrays you.</div><div class="q-item">Sometimes you will never know the value of a moment until it becomes a memory — Dr. Seuss</div><div class="q-item">I shouldve paid 50 robux to skip this stage</div><div class="q-item">No, I did not take this picture at home.</div><div class="q-item">People are going to judge you anyways, so you might as well do what you want.</div>
+    <div class="q-item">Your life is your story. Write it well.</div><div class="q-item">The best time is now</div><div class="q-item">Not everything is a competition, but if you don't treat it like that, you will never be successful.</div><div class="q-item">School taught me many things, for example, sleep 3 hours at night and on the next day stay alive during the class</div><div class="q-item">Tired</div><div class="q-item">A false spotlight shines to create the false sense of victory. Only when all the lights have been turned on can you see the entire room.</div><div class="q-item">Dream big, work hard, stay kind.</div><div class="q-item">Brain conflagrated, graduation successful.</div><div class="q-item">A quote doesn't decide who you are. You do.</div><div class="q-item">Gotta stay down and get it, I know that it's gon' be alright — NBA Youngboy</div><div class="q-item">I remember I wanted to quit so many times but, I knew this moment'd come, now its my time. — NBA Youngboy</div><div class="q-item">Let your light shine before others</div><div class="q-item">Ion Run It</div><div class="q-item">What you learn today shapes your tomorrow.</div><div class="q-item">I wish that time would last forever</div><div class="q-item">Graduating just to go back to school again</div><div class="q-item">Sometimes it's the journey that teaches you a lot about your destination — Drake</div><div class="q-item">My excuse is that I'm young. — Drake</div><div class="q-item">Let your failures teach you how to dougie</div><div class="q-item">Don't let others write your story; let ChatGPT and Google write it. That's how you make less mistakes. Trust me, I've been through it.</div><div class="q-item">Hard work never betrays you.</div><div class="q-item">Sometimes you will never know the value of a moment until it becomes a memory — Dr. Seuss</div><div class="q-item">I shouldve paid 50 robux to skip this stage</div><div class="q-item">No, I did not take this picture at home.</div><div class="q-item">People are going to judge you anyways, so you might as well do what you want.</div>
+  </div>
+</div>
+<div class="quote-rail right">
+  <div class="quote-track">
+    <div class="q-item">Thank you, ChatGPT for helping me through out this year.</div><div class="q-item">The best way to predict the future is to create it</div><div class="q-item">Have a happy day.</div><div class="q-item">Normal is boring.</div><div class="q-item">I don't run it.</div><div class="q-item">Swing hard, even if you miss</div><div class="q-item">Hard work beats talent when talent doesn't work hard — Tim Notke</div><div class="q-item">Growth begins where comfort ends.</div><div class="q-item">How lucky am I to have something to make saying goodbye so hard.</div><div class="q-item">Isn't it funny how nothing seems to change day by day, but when you look back, everything has?</div><div class="q-item">You miss 100% of the shots you don't take.</div><div class="q-item">There is no failure in losing, the real failure is in not trying at all.</div><div class="q-item">Always be the best of yourself, and never give up on what you love.</div><div class="q-item">Even this quote was turned in late.</div><div class="q-item">The most important thing in life is found in the journey to achieve it.</div><div class="q-item">May today's period be the first letter of tomorrow.</div><div class="q-item">It's not about being the best, it's about being better than yourself than you were yesterday</div><div class="q-item">Thanks for the good memories — E.J Sand.</div><div class="q-item">Inspired by the Fear of being Average</div><div class="q-item">I didn't get here alone - I had right people behind me.</div><div class="q-item">Don't look back, that's not the way you're going.</div><div class="q-item">Go confidently in the direction of your dreams. Live the life you have imagined.</div><div class="q-item">The saddest thing in life is wasted talent — A Bronx Tale</div><div class="q-item">Endless gratitude to my mom, dad, and my brother for everything they've done.</div><div class="q-item">Now it's time to turn my dreams into something I'm proud of.</div>
+    <div class="q-item">Thank you, ChatGPT for helping me through out this year.</div><div class="q-item">The best way to predict the future is to create it</div><div class="q-item">Have a happy day.</div><div class="q-item">Normal is boring.</div><div class="q-item">I don't run it.</div><div class="q-item">Swing hard, even if you miss</div><div class="q-item">Hard work beats talent when talent doesn't work hard — Tim Notke</div><div class="q-item">Growth begins where comfort ends.</div><div class="q-item">How lucky am I to have something to make saying goodbye so hard.</div><div class="q-item">Isn't it funny how nothing seems to change day by day, but when you look back, everything has?</div><div class="q-item">You miss 100% of the shots you don't take.</div><div class="q-item">There is no failure in losing, the real failure is in not trying at all.</div><div class="q-item">Always be the best of yourself, and never give up on what you love.</div><div class="q-item">Even this quote was turned in late.</div><div class="q-item">The most important thing in life is found in the journey to achieve it.</div><div class="q-item">May today's period be the first letter of tomorrow.</div><div class="q-item">It's not about being the best, it's about being better than yourself than you were yesterday</div><div class="q-item">Thanks for the good memories — E.J Sand.</div><div class="q-item">Inspired by the Fear of being Average</div><div class="q-item">I didn't get here alone - I had right people behind me.</div><div class="q-item">Don't look back, that's not the way you're going.</div><div class="q-item">Go confidently in the direction of your dreams. Live the life you have imagined.</div><div class="q-item">The saddest thing in life is wasted talent — A Bronx Tale</div><div class="q-item">Endless gratitude to my mom, dad, and my brother for everything they've done.</div><div class="q-item">Now it's time to turn my dreams into something I'm proud of.</div>
+  </div>
+</div>
 
 <div class="page">
 
