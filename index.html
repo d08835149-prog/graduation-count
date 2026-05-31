@@ -129,13 +129,15 @@
     margin-bottom: 1rem;
   }
   .hero-number {
-    font-size: clamp(5rem, 18vw, 9rem);
+    font-size: clamp(4rem, 14vw, 7rem);
     font-weight: 800;
     line-height: 0.9;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.05em;
     font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
     color: #fff;
     text-align: center;
+    font-family: 'DM Mono', monospace;
   }
   .hero-unit {
     font-size: 1.3rem;
@@ -301,7 +303,7 @@
   .quote-rail {
     position: fixed;
     top: 0;
-    width: 200px;
+    width: 160px;
     height: 100vh;
     overflow: hidden;
     pointer-events: none;
@@ -337,7 +339,7 @@
     to   { transform: translateY(-50%); }
   }
 
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     .quote-rail { display: none; }
   }
 
