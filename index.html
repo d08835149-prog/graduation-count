@@ -49,7 +49,7 @@
     pointer-events: none;
   }
 
-  .page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
+  .page { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 
   /* ── header ── */
   header { text-align: center; margin-bottom: 3.5rem; }
@@ -114,7 +114,7 @@
   .hero {
     position: relative;
     border-radius: 20px;
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
     margin-left: 1rem;
@@ -413,12 +413,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.2rem;
   }
   .teacher-side {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    width: 180px;
+    flex-shrink: 0;
   }
   .left-teachers { align-items: flex-end; }
   .right-teachers { align-items: flex-start; }
@@ -453,14 +455,37 @@
 
   .tc-quote {
     font-family: 'Syne', sans-serif;
-    font-size: 10px;
+    font-size: 9.5px;
     color: rgba(255,255,255,0.35);
     line-height: 1.5;
     font-style: italic;
     margin-top: 2px;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   .left-teachers .tc-quote { text-align: right; }
   .right-teachers .tc-quote { text-align: left; }
+
+  .teacher-names-row {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+  .tc-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    animation: tcColorShift 5s ease-in-out infinite;
+    background: linear-gradient(90deg, #AFA9EC, #5DCAA5, #F0997B, #EF9F27, #AFA9EC);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   @keyframes tcColorShift {
     0%   { background-position: 0% 50%; }
@@ -580,6 +605,7 @@
     <p class="eyebrow">Class of 2026 ✦ Final Stretch</p>
     <h1>Almost There.</h1>
     <p class="thanks-teachers">Thanks to all teachers who taught Class of 2026 🙏</p>
+  <p class="teacher-names-row">Thanks for — <span class="tc-name">Mr. Schiavone</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Foster</span> &nbsp;·&nbsp; <span class="tc-name">Ms. Morgani</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Evers</span></p>
   <p class="subtitle">Every second is one step closer to freedom.</p>
     <span id="live-date"></span>
   </header>
@@ -591,33 +617,7 @@
     <div class="hero-orb orb3"></div>
     <div class="hero-inner">
       <p class="hero-label">🏫 School days remaining</p>
-      <div class="hero-center-row">
-        <div class="teacher-side left-teachers">
-          <div class="teacher-card">
-            <span class="tc-name">Mr. Schiavone</span>
-            <span class="tc-quote">For pushing us harder than we wanted,<br>and exactly as hard as we needed.</span>
-            <span class="tc-quote">You never let us settle. Thank you.</span>
-          </div>
-          <div class="teacher-card">
-            <span class="tc-name">Mr. Foster</span>
-            <span class="tc-quote">For making us believe we were capable<br>of more than we thought.</span>
-            <span class="tc-quote">We'll carry that confidence with us.</span>
-          </div>
-        </div>
-        <div class="hero-number" id="school-num"></div>
-        <div class="teacher-side right-teachers">
-          <div class="teacher-card">
-            <span class="tc-name">Ms. Morgani</span>
-            <span class="tc-quote">For the tough love we didn't always<br>understand — but truly needed.</span>
-            <span class="tc-quote">We get it now. Thank you.</span>
-          </div>
-          <div class="teacher-card">
-            <span class="tc-name">Mr. Evers</span>
-            <span class="tc-quote">For keeping it real with us every day.<br>That honesty meant everything.</span>
-            <span class="tc-quote">One of the ones we won't forget.</span>
-          </div>
-        </div>
-      </div>
+      <div class="hero-number" id="school-num"></div>
       <p class="hero-unit">days left</p>
       <p class="hero-sub">Based on May 30, 2026 — counting down daily</p>
     </div>
