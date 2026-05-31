@@ -408,6 +408,66 @@
   .left-teachers { text-align: right; }
   .right-teachers { text-align: left; }
 
+
+  .hero-center-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .teacher-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .left-teachers { align-items: flex-end; }
+  .right-teachers { align-items: flex-start; }
+
+  .teacher-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .left-teachers .teacher-card { align-items: flex-end; }
+  .right-teachers .teacher-card { align-items: flex-start; }
+
+  .tc-thanks {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .tc-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    animation: tcColorShift 5s ease-in-out infinite;
+    background: linear-gradient(90deg, #AFA9EC, #5DCAA5, #F0997B, #EF9F27, #AFA9EC);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tc-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .left-teachers .tc-quote { text-align: right; }
+  .right-teachers .tc-quote { text-align: left; }
+
+  @keyframes tcColorShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   @keyframes scrollDown {
     from { transform: translateY(0); }
     to   { transform: translateY(-50%); }
@@ -416,6 +476,77 @@
   @media (max-width: 900px) {
     .quote-rail { display: none; }
   }
+
+
+  /* ── music player ── */
+  .music-player {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .music-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+  }
+  .music-toggle:hover { background: rgba(255,255,255,0.18); }
+  .music-panel {
+    background: rgba(15,15,25,0.92);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 14px;
+    width: 220px;
+    backdrop-filter: blur(20px);
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .music-panel.open { display: flex; }
+  .music-panel-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+  .track-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    text-align: left;
+  }
+  .track-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .track-btn.playing { background: rgba(127,119,221,0.2); border-color: rgba(127,119,221,0.4); color: #fff; }
+  .track-icon { font-size: 16px; flex-shrink: 0; }
+  .track-info { display: flex; flex-direction: column; gap: 2px; }
+  .track-name { font-weight: 600; font-size: 12px; }
+  .track-artist { font-size: 10px; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; }
+  .yt-frame { display: none; }
 
 </style>
 </head>
@@ -460,7 +591,33 @@
     <div class="hero-orb orb3"></div>
     <div class="hero-inner">
       <p class="hero-label">🏫 School days remaining</p>
-      <div class="hero-number" id="school-num"></div>
+      <div class="hero-center-row">
+        <div class="teacher-side left-teachers">
+          <div class="teacher-card">
+            <span class="tc-name">Mr. Schiavone</span>
+            <span class="tc-quote">For pushing us harder than we wanted,<br>and exactly as hard as we needed.</span>
+            <span class="tc-quote">You never let us settle. Thank you.</span>
+          </div>
+          <div class="teacher-card">
+            <span class="tc-name">Mr. Foster</span>
+            <span class="tc-quote">For making us believe we were capable<br>of more than we thought.</span>
+            <span class="tc-quote">We'll carry that confidence with us.</span>
+          </div>
+        </div>
+        <div class="hero-number" id="school-num"></div>
+        <div class="teacher-side right-teachers">
+          <div class="teacher-card">
+            <span class="tc-name">Ms. Morgani</span>
+            <span class="tc-quote">For the tough love we didn't always<br>understand — but truly needed.</span>
+            <span class="tc-quote">We get it now. Thank you.</span>
+          </div>
+          <div class="teacher-card">
+            <span class="tc-name">Mr. Evers</span>
+            <span class="tc-quote">For keeping it real with us every day.<br>That honesty meant everything.</span>
+            <span class="tc-quote">One of the ones we won't forget.</span>
+          </div>
+        </div>
+      </div>
       <p class="hero-unit">days left</p>
       <p class="hero-sub">Based on May 30, 2026 — counting down daily</p>
     </div>
@@ -568,5 +725,73 @@ function tick() {
 tick();
 setInterval(tick, 50);
 </script>
+
+<div class="music-player">
+  <div class="music-panel" id="music-panel">
+    <div class="music-panel-title">🎵 Now Playing</div>
+    <button class="track-btn" id="btn-0" onclick="playTrack(0)">
+      <span class="track-icon">🎓</span>
+      <div class="track-info">
+        <span class="track-name">Pomp & Circumstance</span>
+        <span class="track-artist">Elgar</span>
+      </div>
+    </button>
+    <button class="track-btn" id="btn-1" onclick="playTrack(1)">
+      <span class="track-icon">🕊️</span>
+      <div class="track-info">
+        <span class="track-name">See You Again</span>
+        <span class="track-artist">Wiz Khalifa</span>
+      </div>
+    </button>
+    <button class="track-btn" id="btn-2" onclick="playTrack(2)">
+      <span class="track-icon">🌿</span>
+      <div class="track-info">
+        <span class="track-name">Good Riddance</span>
+        <span class="track-artist">Green Day</span>
+      </div>
+    </button>
+  </div>
+  <button class="music-toggle" id="music-toggle" onclick="togglePanel()">🎵</button>
+</div>
+
+<!-- hidden YouTube iframes -->
+<iframe class="yt-frame" id="yt-0" width="0" height="0"
+  src="https://www.youtube.com/embed/ckk0NlAfCBE?enablejsapi=1" allow="autoplay"></iframe>
+<iframe class="yt-frame" id="yt-1" width="0" height="0"
+  src="https://www.youtube.com/embed/RgKAFK5djSk?enablejsapi=1" allow="autoplay"></iframe>
+<iframe class="yt-frame" id="yt-2" width="0" height="0"
+  src="https://www.youtube.com/embed/CnQ8N1KacJc?enablejsapi=1" allow="autoplay"></iframe>
+
+<script>
+let currentTrack = -1;
+let panelOpen = false;
+
+function togglePanel() {
+  panelOpen = !panelOpen;
+  document.getElementById('music-panel').classList.toggle('open', panelOpen);
+}
+
+function playTrack(idx) {
+  // Stop current
+  if (currentTrack >= 0) {
+    const prev = document.getElementById('yt-' + currentTrack);
+    prev.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    document.getElementById('btn-' + currentTrack).classList.remove('playing');
+  }
+
+  if (currentTrack === idx) {
+    currentTrack = -1;
+    document.getElementById('music-toggle').textContent = '🎵';
+    return;
+  }
+
+  currentTrack = idx;
+  const frame = document.getElementById('yt-' + idx);
+  frame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+  document.getElementById('btn-' + idx).classList.add('playing');
+  document.getElementById('music-toggle').textContent = '🔊';
+}
+</script>
+
 </body>
 </html>
