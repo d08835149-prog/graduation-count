@@ -49,7 +49,7 @@
     pointer-events: none;
   }
 
-  .page { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  .page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
 
   /* ── header ── */
   header { text-align: center; margin-bottom: 3.5rem; }
@@ -98,6 +98,8 @@
     padding: 3rem 2rem;
     text-align: center;
     margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     overflow: hidden;
     background: linear-gradient(135deg, #2a2660 0%, #1a3d2b 55%, #3d1f10 100%);
     border: 1px solid rgba(255,255,255,0.08);
@@ -309,8 +311,8 @@
     pointer-events: none;
     z-index: 0;
   }
-  .quote-rail.left  { left: 0; }
-  .quote-rail.right { right: 0; }
+  .quote-rail.left  { left: 8px; }
+  .quote-rail.right { right: 8px; }
 
   .quote-track {
     display: flex;
@@ -341,6 +343,47 @@
     font-family: 'Syne', sans-serif;
     font-weight: 400;
   }
+
+
+  .hero-center-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .teacher-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0.55;
+  }
+  .teacher-side span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+  }
+
+  .thanks-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35) !important;
+    margin-bottom: -6px;
+  }
+  .teacher-name {
+    font-family: 'Syne', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600;
+    letter-spacing: 0.04em !important;
+    color: rgba(255,255,255,0.85) !important;
+  }
+
+  .left-teachers { text-align: right; }
+  .right-teachers { text-align: left; }
 
   @keyframes scrollDown {
     from { transform: translateY(0); }
@@ -393,7 +436,21 @@
     <div class="hero-orb orb3"></div>
     <div class="hero-inner">
       <p class="hero-label">🏫 School days remaining</p>
-      <div class="hero-number" id="school-num"></div>
+      <div class="hero-center-row">
+        <div class="teacher-side left-teachers">
+          <span class="thanks-label">Thanks for</span>
+          <span class="teacher-name">Mr. Schiavone</span>
+          <span class="thanks-label">Thanks for</span>
+          <span class="teacher-name">Mr. Foster</span>
+        </div>
+        <div class="hero-number" id="school-num"></div>
+        <div class="teacher-side right-teachers">
+          <span class="thanks-label">Thanks for</span>
+          <span class="teacher-name">Ms. Morgani</span>
+          <span class="thanks-label">Thanks for</span>
+          <span class="teacher-name">Mr. Evers</span>
+        </div>
+      </div>
       <p class="hero-unit">days left</p>
       <p class="hero-sub">Based on May 30, 2026 — counting down daily</p>
     </div>
