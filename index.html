@@ -38,7 +38,6 @@
     overflow-x: hidden;
   }
 
-  /* ── background mesh ── */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: 0;
@@ -51,7 +50,6 @@
 
   .page { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 
-  /* ── header ── */
   header { text-align: center; margin-bottom: 3.5rem; }
   .eyebrow {
     font-family: 'DM Mono', monospace;
@@ -108,6 +106,107 @@
     font-size: 12px;
     color: var(--faint);
     margin-top: 0.5rem;
+  }
+
+  /* ── progress bar ── */
+  .progress-section {
+    margin: 0 1rem 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.45s forwards;
+  }
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .progress-stats {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .progress-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    background: linear-gradient(90deg, #AFA9EC, #5DCAA5, #F0997B, #EF9F27, #AFA9EC);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: colorShift 4s ease-in-out infinite;
+  }
+  .progress-fraction {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  .progress-track {
+    position: relative;
+    height: 10px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #534AB7, #7F77DD, #1D9E75, #5DCAA5, #EF9F27, #D85A30, #534AB7);
+    background-size: 300% 100%;
+    animation: barShift 5s linear infinite;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px rgba(175,169,236,0.9), 0 0 4px rgba(255,255,255,0.8);
+    transform: translateX(50%);
+  }
+  @keyframes barShift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  .progress-milestones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    position: relative;
+  }
+  .pm-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .pm-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: background 0.5s;
+  }
+  .pm-dot.passed { background: var(--teal-m); box-shadow: 0 0 6px rgba(29,158,117,0.7); }
+  .pm-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--faint);
+    letter-spacing: 0.1em;
   }
 
   /* ── school days hero ── */
@@ -235,7 +334,6 @@
     margin-bottom: 1.25rem;
   }
 
-  /* ── timer ── */
   .timer-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -279,7 +377,6 @@
     border-radius: 99px;
   }
 
-  /* ── divider ── */
   .section-divider {
     display: flex;
     align-items: center;
@@ -304,7 +401,6 @@
     background: var(--border);
   }
 
-  /* ── footer ── */
   footer {
     text-align: center;
     margin-top: 3rem;
@@ -367,105 +463,6 @@
   .q-item:nth-child(7n+6) { background: rgba(15,110,86,0.12); border: 1px solid rgba(15,110,86,0.22); color: rgba(120,220,185,0.7); }
   .q-item:nth-child(7n+0) { background: rgba(180,60,20,0.1); border: 1px solid rgba(180,60,20,0.2); color: rgba(255,160,120,0.7); }
 
-
-  .hero-center-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  .teacher-side {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    opacity: 0.55;
-  }
-  .teacher-side span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    white-space: nowrap;
-  }
-
-  .thanks-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35) !important;
-    margin-bottom: -6px;
-  }
-  .teacher-name {
-    font-family: 'Syne', sans-serif !important;
-    font-size: 13px !important;
-    font-weight: 600;
-    letter-spacing: 0.04em !important;
-    color: rgba(255,255,255,0.85) !important;
-  }
-
-  .left-teachers { text-align: right; }
-  .right-teachers { text-align: left; }
-
-
-  .hero-center-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-  }
-  .teacher-side {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 180px;
-    flex-shrink: 0;
-  }
-  .left-teachers { align-items: flex-end; }
-  .right-teachers { align-items: flex-start; }
-
-  .teacher-card {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .left-teachers .teacher-card { align-items: flex-end; }
-  .right-teachers .teacher-card { align-items: flex-start; }
-
-  .tc-thanks {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-  }
-  .tc-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    animation: tcColorShift 5s ease-in-out infinite;
-    background: linear-gradient(90deg, #AFA9EC, #5DCAA5, #F0997B, #EF9F27, #AFA9EC);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .tc-quote {
-    font-family: 'Syne', sans-serif;
-    font-size: 9.5px;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.5;
-    font-style: italic;
-    margin-top: 2px;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-  .left-teachers .tc-quote { text-align: right; }
-  .right-teachers .tc-quote { text-align: left; }
-
   .teacher-names-row {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -501,7 +498,6 @@
   @media (max-width: 900px) {
     .quote-rail { display: none; }
   }
-
 
   /* ── music player ── */
   .music-player {
@@ -573,7 +569,6 @@
   .track-artist { font-size: 10px; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; }
   .yt-frame { display: none; }
 
-
   @media (max-width: 768px) {
     body { background: #12121f; }
     body::before {
@@ -583,23 +578,16 @@
         radial-gradient(ellipse 50% 40% at 20% 60%, rgba(216,90,48,0.18) 0%, transparent 65%);
     }
     .page { padding: 2rem 1rem 4rem; }
-
     header h1 { font-size: 2.8rem; }
-
     .hero { padding: 2rem 1.2rem; margin-left: 0; margin-right: 0; }
     .hero-number { font-size: 5rem; }
-
     .cards { grid-template-columns: 1fr; gap: 10px; }
-
     .t-num { font-size: 1.2rem; }
-
     .teacher-names-row { font-size: 10px; }
-
     .section-divider span { font-size: 9px; }
-
     .quote-rail { display: none; }
-
     footer { font-size: 10px; }
+    .progress-section { margin-left: 0; margin-right: 0; }
   }
 
   @media (max-width: 480px) {
@@ -609,12 +597,11 @@
     .subtitle { font-size: 13px; }
     .thanks-teachers { font-size: 11px; }
     .teacher-names-row { font-size: 9px; }
+    .progress-pct { font-size: 18px; }
   }
-
 </style>
 </head>
 <body>
-
 
 <div class="quote-rail left">
   <div class="quote-track">
@@ -643,10 +630,50 @@
     <p class="eyebrow">Class of 2026 ✦ Final Stretch</p>
     <h1>Almost There.</h1>
     <p class="thanks-teachers">Thanks to all teachers who taught Class of 2026 🙏</p>
-  <p class="teacher-names-row">Thanks for — <span class="tc-name">Mr. Schiavone</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Foster</span> &nbsp;·&nbsp; <span class="tc-name">Ms. Morgani</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Evers</span></p>
-  <p class="subtitle">Every second is one step closer to freedom.</p>
+    <p class="teacher-names-row">Thanks for — <span class="tc-name">Mr. Schiavone</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Foster</span> &nbsp;·&nbsp; <span class="tc-name">Ms. Morgani</span> &nbsp;·&nbsp; <span class="tc-name">Mr. Evers</span></p>
+    <p class="subtitle">Every second is one step closer to freedom.</p>
     <span id="live-date"></span>
   </header>
+
+  <!-- ── PROGRESS BAR ── -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">🏫 School Year Progress</span>
+      <div class="progress-stats">
+        <span class="progress-fraction" id="prog-fraction"></span>
+        <span class="progress-pct" id="prog-pct"></span>
+      </div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="prog-fill" style="width: 0%"></div>
+    </div>
+    <div class="progress-milestones">
+      <div class="pm-item">
+        <div class="pm-dot passed" id="dot-0"></div>
+        <span class="pm-label">START</span>
+      </div>
+      <div class="pm-item">
+        <div class="pm-dot" id="dot-25"></div>
+        <span class="pm-label">25%</span>
+      </div>
+      <div class="pm-item">
+        <div class="pm-dot" id="dot-50"></div>
+        <span class="pm-label">50%</span>
+      </div>
+      <div class="pm-item">
+        <div class="pm-dot" id="dot-75"></div>
+        <span class="pm-label">75%</span>
+      </div>
+      <div class="pm-item">
+        <div class="pm-dot" id="dot-90"></div>
+        <span class="pm-label">90%</span>
+      </div>
+      <div class="pm-item">
+        <div class="pm-dot" id="dot-100"></div>
+        <span class="pm-label">Grad 🎓</span>
+      </div>
+    </div>
+  </div>
 
   <!-- school days hero -->
   <div class="hero">
@@ -703,6 +730,8 @@
 </div>
 
 <script>
+const TOTAL_SCHOOL_DAYS = 185;
+
 const SCHOOL_DATES = [
   '2026-06-01','2026-06-02','2026-06-03','2026-06-04',
   '2026-06-08','2026-06-09','2026-06-10','2026-06-11','2026-06-12',
@@ -722,6 +751,33 @@ function schoolDaysLeft() {
   const now = new Date();
   const todayStr = now.toISOString().slice(0, 10);
   return SCHOOL_DATES.filter(d => d >= todayStr).length;
+}
+
+function updateProgress() {
+  const remaining = schoolDaysLeft();
+  const completed = TOTAL_SCHOOL_DAYS - remaining;
+  const pct = Math.min(100, Math.max(0, (completed / TOTAL_SCHOOL_DAYS) * 100));
+  const pctRounded = Math.round(pct * 10) / 10;
+
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pctRounded.toFixed(1) + '%';
+  document.getElementById('prog-fraction').textContent = completed + ' / ' + TOTAL_SCHOOL_DAYS + ' days';
+
+  const milestones = [
+    { id: 'dot-25', threshold: 25 },
+    { id: 'dot-50', threshold: 50 },
+    { id: 'dot-75', threshold: 75 },
+    { id: 'dot-90', threshold: 90 },
+    { id: 'dot-100', threshold: 100 },
+  ];
+  milestones.forEach(m => {
+    const dot = document.getElementById(m.id);
+    if (pct >= m.threshold) {
+      dot.classList.add('passed');
+    } else {
+      dot.classList.remove('passed');
+    }
+  });
 }
 
 function buildTimer(ms) {
@@ -751,7 +807,10 @@ function tick() {
   document.getElementById('live-date').textContent =
     now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-  document.getElementById('school-num').textContent = schoolDaysLeft();
+  const daysLeft = schoolDaysLeft();
+  document.getElementById('school-num').textContent = daysLeft;
+
+  updateProgress();
 
   events.forEach(e => {
     const ms = e.target - now;
@@ -762,6 +821,14 @@ function tick() {
 
 tick();
 setInterval(tick, 50);
+
+// Animate progress bar fill on load
+setTimeout(() => {
+  const remaining = schoolDaysLeft();
+  const completed = TOTAL_SCHOOL_DAYS - remaining;
+  const pct = Math.min(100, (completed / TOTAL_SCHOOL_DAYS) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+}, 600);
 </script>
 
 <div class="music-player">
@@ -770,7 +837,7 @@ setInterval(tick, 50);
     <button class="track-btn" id="btn-0" onclick="playTrack(0)">
       <span class="track-icon">🎓</span>
       <div class="track-info">
-        <span class="track-name">Pomp & Circumstance</span>
+        <span class="track-name">Pomp &amp; Circumstance</span>
         <span class="track-artist">Elgar</span>
       </div>
     </button>
@@ -792,7 +859,6 @@ setInterval(tick, 50);
   <button class="music-toggle" id="music-toggle" onclick="togglePanel()">🎵</button>
 </div>
 
-<!-- hidden YouTube iframes -->
 <iframe class="yt-frame" id="yt-0" width="0" height="0"
   src="https://www.youtube.com/embed/ckk0NlAfCBE?enablejsapi=1" allow="autoplay"></iframe>
 <iframe class="yt-frame" id="yt-1" width="0" height="0"
@@ -810,7 +876,6 @@ function togglePanel() {
 }
 
 function playTrack(idx) {
-  // Stop current
   if (currentTrack >= 0) {
     const prev = document.getElementById('yt-' + currentTrack);
     prev.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
